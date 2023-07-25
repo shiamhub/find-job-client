@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Job = () => {
     const [job, setJob] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/jobs')
+        fetch('https://find-job-server-shiamhub.vercel.app/jobs')
             .then(res => res.json())
             .then(data => {
                 setJob(data)
