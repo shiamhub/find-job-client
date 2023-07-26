@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Home from './pages/Home/Home.jsx';
 import SingleJob from './pages/Job/SingleJob.jsx';
+import Login from './authentication/Login.jsx';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
         path: "job/:id",
         element: <SingleJob></SingleJob>,
         loader: ({ params }) => fetch(`https://find-job-server-shiamhub.vercel.app/job/${params.id}`)
+      },
+      {
+        path: 'login',
+        element: <Login></Login>
       }
     ]
   }
