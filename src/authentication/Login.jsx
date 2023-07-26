@@ -11,14 +11,11 @@ const Login = () => {
         createUserWithEmailAndPassword(auth, email, password)
         .then((result) => {
             e.target.reset();
-            console.log(result);
+            console.log(result.user);
         })
         .catch((error) => {
             console.error(error);
         })
-
-
-
     }
 
     return (
