@@ -1,4 +1,4 @@
-import Job from "../Job/Job";
+import Job from "../../features/jobs/Job";
 
 const Home = () => {
     return (

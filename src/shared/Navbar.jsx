@@ -1,6 +1,22 @@
 import { Link } from "react-router-dom";
+// import {AiOutlineFileSearch} from "react-icons/ai"
 
 const Navbar = () => {
+
+    const handelSubmit = (e) => {
+        e.preventDefault();
+        const title = e.target.title.value;
+        const location = e.target.location.value;
+        const type = e.target.type.value;
+        console.log(title, location, type);
+        fetch(`http://localhost:5000/search?title=${title}&&location=${location}&&type=${type}`)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+        })
+
+    }
+
     const navItem = <>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/">About</Link></li>
@@ -14,15 +30,18 @@ const Navbar = () => {
                 <div className="w-full flex justify-between">
                     <div className="lg:flex items-center">
                         <h1 className="text-3xl font-bold text-yellow-600">Job<span className="text-black">Find</span></h1>
-                        <div className="lg:ml-8 w-full hidden lg:block">
-                            <input type="text" placeholder="job title" className="input input-bordered w-80 rounded-r" />
-                        </div>
-                        <div className="w-full hidden lg:block">
-                            <input type="text" placeholder="location" className="input input-bordered w-full rounded-none" />
-                        </div>
-                        <div className="w-full hidden lg:block">
-                            <input type="text" placeholder="type" className="input input-bordered w-full rounded-l-none" />
-                        </div>
+                        <form onSubmit={handelSubmit} className="flex">
+                            <div className="lg:ml-8 w-full hidden lg:block">
+                                <input name="title" type="text" placeholder="job title" className="input input-bordered w-80 rounded-r" />
+                            </div>
+                            <div className="w-full hidden lg:block">
+                                <input name="location" type="text" placeholder="location" className="input input-bordered w-full rounded-none" />
+                            </div>
+                            <div className="w-full hidden lg:block">
+                                <input name="type" type="text" placeholder="type" className="input input-bordered w-full rounded-l-none" />
+                            </div>
+                            <input type="submit" value="Search" className="btn outline" name="" id="" />
+                        </form>
                     </div>
                     <div className="dropdown lg:hidden">
                         <label tabIndex={0} className="btn btn-ghost">

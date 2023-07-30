@@ -1,4 +1,3 @@
-import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
@@ -7,8 +6,10 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Home from './pages/Home/Home.jsx';
-import SingleJob from './pages/Job/SingleJob.jsx';
+import SingleJob from './features/jobs/SingleJob.jsx';
 import Login from './authentication/Login.jsx';
+import { Provider } from 'react-redux';
+import { store } from './app/store.js';
 
 const router = createBrowserRouter([
   {
@@ -22,7 +23,8 @@ const router = createBrowserRouter([
       {
         path: "job/:id",
         element: <SingleJob></SingleJob>,
-        loader: ({ params }) => fetch(`https://find-job-server-shiamhub.vercel.app/job/${params.id}`)
+        // loader: ({ params }) => fetch(`https://find-job-server-shiamhub.vercel.app/job/${params.id}`)
+        // loader: ({ params }) => fetch(`http://localhost:5000/job/${params.id}`)
       },
       {
         path: 'login',
@@ -33,7 +35,7 @@ const router = createBrowserRouter([
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  <Provider store={store}>
     <RouterProvider router={router} />
-  </React.StrictMode>,
+  </Provider>,
 )

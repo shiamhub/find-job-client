@@ -9,14 +9,6 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_APPID,
 };
 
-// const firebaseConfig = {
-//     apiKey: "AIzaSyBERHdxY4_Wv4NoDsJUNLV3ylHNpUSfFOA",
-//     authDomain: "new-job-find.firebaseapp.com",
-//     projectId: "new-job-find",
-//     storageBucket: "new-job-find.appspot.com",
-//     messagingSenderId: "65287735832",
-//     appId: "1:65287735832:web:e63756a96f9d406d4f516d"
-// };
 
 const app = initializeApp(firebaseConfig);
 
